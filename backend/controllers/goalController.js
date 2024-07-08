@@ -32,8 +32,7 @@ export const updateGoal = asyncHandler(async (req, res, next) => {
         return next(error);
     }
     // Check for User
-    const user = await User.findById(req.user.id);
-    if (!user) {
+    if (!req.user) {
         const error = new Error(`User not found`);
         error.status = 401;
         return next(error);
@@ -59,8 +58,7 @@ export const deleteGoal = asyncHandler(async (req, res, next) => {
         return next(error);
     }
     // Check for User
-    const user = await User.findById(req.user.id);
-    if (!user) {
+    if (!req.user) {
         const error = new Error(`User not found`);
         error.status = 401;
         return next(error);
